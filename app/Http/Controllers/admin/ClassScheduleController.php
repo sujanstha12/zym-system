@@ -32,10 +32,11 @@ class ClassScheduleController extends Controller
         Alert::success('ClassSchedule created successfully');
         return back();
     }
-    public function edit($id)
+    public function edit(ClassSchedule $classSchedule)
     {
-        $classSchedules = ClassSchedule::findOrFail($id);
-        return view('admin.classSchedule.edit', compact('classSchedules'));
+         $ourclasses = Ourclass::all();
+        $instructors = Instructor::all();
+        return view('admin.classSchedule.edit', compact('classSchedule','ourclasses','instructors'));
     }
     public function update(UpdateClassScheduleRequest $request, ClassSchedule $classSchedules)
     {

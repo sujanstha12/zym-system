@@ -9,20 +9,25 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class ClassSchedule extends Model
 {
     use HasFactory;
-     protected $fillable=[
+    protected $fillable = [
 
         'instructor_id',
         'ourclass_id',
-        'time',
+        'start_time',
+        'end_time',
         'day',
     ];
+    protected $casts = [
+        'start_time' => 'datetime:H:i:s',
+        'end_time' => 'datetime:H:i:s',
+    ];
 
-     public function ourClass(): BelongsTo
-       {
-           return $this->belongsTo(Ourclass::class, 'ourclass_id');
-       }
-        public function instructor(): BelongsTo
-       {
-           return $this->belongsTo(Instructor::class, 'instructor_id');
-       }
+    public function ourClass(): BelongsTo
+    {
+        return $this->belongsTo(Ourclass::class, 'ourclass_id');
+    }
+    public function instructor(): BelongsTo
+    {
+        return $this->belongsTo(Instructor::class, 'instructor_id');
+    }
 }

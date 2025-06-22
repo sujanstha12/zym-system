@@ -9,10 +9,15 @@
         <div class="sidebar_user_info">
             <div class="icon_setting"></div>
             <div class="user_profle_side">
-                <div class="user_img"><img class="img-responsive" src="images/layout_img/user_img.jpg" alt="#" />
+                <div class="user_img">
+                    @if (Auth::user()->image == null)
+                        <img class="img-responsive" src="images/layout_img/user_img.jpg" alt="#" />
+                    @else
+                        <img class="img-responsive" src="{{ Auth::user()->image }}" alt="{{ Auth::user()->name }}" />
+                    @endif
                 </div>
                 <div class="user_info">
-                    <h6>John David</h6>
+                    <h6>{{ Auth::user()->name }}</h6>
                     <p><span class="online_animation"></span> Online</p>
                 </div>
             </div>
@@ -52,7 +57,7 @@
                     <i class="fa fa-paper-plane red_color"></i> <span>Contact Message</span></a>
             </li>
 
- <li><a href="{{ route('admin.product.create') }}"><i class="fa fa-mortar-board purple_color2"></i>
+            <li><a href="{{ route('admin.product.create') }}"><i class="fa fa-mortar-board purple_color2"></i>
                     <span>Products</span></a>
             </li>
 

@@ -56,8 +56,15 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="time" class="form-label">Time</label>
-                    <input type="time" class="form-control" id="time" name="time">
+                    <label class="form-label">Time</label>
+                    <div class="row">
+                        <div class="col">
+                            <input type="time" class="form-control" name="start_time" placeholder="From">
+                        </div>
+                        <div class="col">
+                            <input type="time" class="form-control" name="end_time" placeholder="To">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="d-grid mt-4">

@@ -36,25 +36,25 @@ class FrontendController extends Controller
     }
     public function ourproduct()
     {
-         $products = Product::limit(12)->latest()->get();
+        $products = Product::limit(12)->latest()->get();
         return view('frontend.ourproduct', compact('products'));
     }
 
-        public function productdetails(Product $product)
-{
+    public function productdetails(Product $product)
+    {
 
-    return view('frontend.productdetails', compact('product'));
-}
-     public function trainer()
+        return view('frontend.productdetails', compact('product'));
+    }
+    public function trainer()
     {
         $instructors = Instructor::limit(8)->latest()->get();
         return view('frontend.trainer', compact('instructors'));
     }
 
     public function trainerDetails(Instructor $instructor)
-{
-    return view('frontend.trainerdetails', compact('instructor'));
-}
+    {
+        return view('frontend.trainerdetails', compact('instructor'));
+    }
 
     public function contactus()
     {
@@ -68,15 +68,9 @@ class FrontendController extends Controller
     }
 
     public function storeContactMessage(StoreContactRequest $request)
-{
-    Contact::create([
-        'full_name' => $request->full_name,
-        'email' => $request->email,
-        'message' => $request->message,
-    ]);
+    {
+        Contact::create($request->validated());
 
-    return redirect()->back()->with('success', 'Message sent successfully!');
-}
-
-
+        return redirect()->back()->with('success', 'Message sent successfully!');
+    }
 }

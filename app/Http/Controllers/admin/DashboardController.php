@@ -4,20 +4,26 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardController extends Controller
 {
-public function profile(Request $request)
-   {
-    return view('admin.profile', [
-        'user' => $request->user(),
-    ]);
-   }
+    public function dashboard()
+    {
+        $productCount = Product::count();
+        return view('dashboard',compact('productCount'));
+    }
+    public function profile(Request $request)
+    {
+        return view('admin.profile', [
+            'user' => $request->user(),
+        ]);
+    }
 
-   public function profileUpdate(ProfileUpdateRequest $request)
+    public function profileUpdate(ProfileUpdateRequest $request)
     {
 
         $request->user()->fill($request->validated());
@@ -30,13 +36,11 @@ public function profile(Request $request)
     public function logout()
     {
         Auth::guard('web')->logout();
-        return(redirect(route('login')));
+        return (redirect(route('login')));
     }
+
     public function setting()
     {
         return view('admin.setting');
     }
-
-
-
 }

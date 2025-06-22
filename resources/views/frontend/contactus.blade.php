@@ -40,14 +40,16 @@
                 If you need any information, feel free to send me message. I will try to answer your questions and give
                 you proper tips about your message.
             </p>
-            <form>
+            <form action="{{ route('storeContactMessage') }}" method="POST">
+                @csrf
                 <div class="input-group">
-                    <input type="text" placeholder="Name" name="name" required>
+                    <input type="text" placeholder="Name" name="full_name" required>
                     <input type="email" placeholder="Email" name="email" required>
                 </div>
                 <textarea placeholder="Write message here" name="message" required></textarea>
-                <a href="admin.contact.show"> <button type="submit">SEND MESSAGE</button></a>
+                <button class="submit-button" type="submit">SEND MESSAGE</button>
             </form>
+ 
         </div>
         <div class="form-container">
             <iframe

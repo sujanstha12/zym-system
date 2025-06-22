@@ -25,7 +25,7 @@
                         <td>{{ $classSchedule->time }}</td>
 
                         <td>
-                            <a href="{{ route('admin.classSchedule.edit', $classSchedule) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{ route('admin.classSchedule.edit',$classSchedule) }}" class="btn btn-warning btn-sm">Edit</a>
                             <form action="{{ route('admin.classSchedule.destroy', $classSchedule) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')

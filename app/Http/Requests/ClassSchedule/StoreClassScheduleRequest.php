@@ -23,10 +23,11 @@ class StoreClassScheduleRequest extends FormRequest
     public function rules(): array
     {
         return [
-           'instructor_id' => ['required',Rule::exists('instructors', 'id')],
-           'ourclass_id' => ['required', Rule::exists('ourclasses', 'id')],
-            'time' => ['required','string','max:255'],
-            'day' => ['required','string','max:255'],
+            'instructor_id' => ['required', Rule::exists('instructors', 'id')],
+            'ourclass_id' => ['required', Rule::exists('ourclasses', 'id')],
+            'day' => ['required', 'string', 'max:255'],
+            'start_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i|after:start_time',
         ];
     }
 }

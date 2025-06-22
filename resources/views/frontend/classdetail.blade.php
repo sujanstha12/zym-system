@@ -32,7 +32,8 @@
                     @foreach ($ourclass->classSchedules as $classSchedule)
                         <tr>
                             <td>{{ $classSchedule->day }}</td>
-                            <td>{{ $classSchedule->time }}</td>
+                           <td>{{ $classSchedule->start_time->format('g:i A') }} to {{ $classSchedule->end_time->format('g:i A') }}</td>
+
                             <td>{{ $classSchedule->instructor->name }}</td>
                         </tr>
                     @endforeach

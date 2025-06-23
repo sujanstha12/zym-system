@@ -42,9 +42,57 @@ class FrontendController extends Controller
 
     public function productdetails(Product $product)
     {
-
         return view('frontend.productdetails', compact('product'));
     }
+
+
+
+
+
+
+
+
+     public function addToCart(Product $product)
+{
+    // Example cart logic using session
+    $cart = session()->get('cart', []);
+
+    if (isset($cart[$product->id])) {
+        $cart[$product->id]['quantity']++;
+    } else {
+        $cart[$product->id] = [
+            'title' => $product->title,
+            'quantity' => 1,
+            'price' => $product->rate,
+            'image' => $product->image
+        ];
+    }
+
+    session()->put('cart', $cart);
+
+    return redirect()->back()->with('success', 'Product added to cart successfully!');
+}
+
+
+// In FrontendController.php
+public function allProducts()
+{
+    $products = Product::latest()->paginate(12);
+    return view('frontend.allproducts', compact('products'));
+}
+public function buyNow(Product $product)
+{
+    // You can send the product directly to a checkout view
+    return view('frontend.checkout', compact('product'));
+}
+
+
+
+
+
+
+
+
     public function trainer()
     {
         $instructors = Instructor::limit(8)->latest()->get();

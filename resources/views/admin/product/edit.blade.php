@@ -35,7 +35,7 @@
 
         <div class="mb-3">
             <label for="stock" class="form-label">Stock</label>
-            <input type="url" class="form-control" name="stock" id="stock">
+            <input type="stock" class="form-control" name="stock" id="stock">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

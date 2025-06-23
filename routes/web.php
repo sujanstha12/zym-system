@@ -25,22 +25,30 @@ Route::get('/', function () {
 
 
 
-    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('about', [FrontendController::class, 'about'])->name('about');
-    Route::get('/', [FrontendController::class, 'index'])->name('welcome');
-    Route::get('ourclass', [FrontendController::class, 'ourclass'])->name('ourclass');
-    Route::get('ourclassDetail/{ourclass}', [FrontendController::class, 'ourclassDetail'])->name('ourclassDetail');
-    Route::get('ourproduct', [FrontendController::class, 'ourproduct'])->name('ourproduct');
-    Route::post('upload', [UploadController::class, 'store'])->name('upload');
-    Route::get('trainer', [FrontendController::class, 'trainer'])->name('trainer');
-    Route::get('/trainer/{instructor}', [FrontendController::class, 'trainerDetails'])->name('trainerdetails');
-    Route::get('contactus', [FrontendController::class, 'contactus'])->name('contactus');
-    Route::post('storeContactMessage', [FrontendController::class, 'storeContactMessage'])->name('storeContactMessage');
-    Route::get('/admin/contact/{id}', [DashboardController::class, 'show'])->name('admin.contact.show');
-    Route::delete('/admin/contact/{id}', [DashboardController::class, 'destroy'])->name('admin.contact.destroy');
-    Route::get('productdetails', [FrontendController::class, 'productdetails'])->name('productdetails');
+// Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+// Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+// Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::get('about', [FrontendController::class, 'about'])->name('about');
+Route::get('/', [FrontendController::class, 'index'])->name('welcome');
+Route::get('ourclass', [FrontendController::class, 'ourclass'])->name('ourclass');
+Route::get('ourclassDetail/{ourclass}', [FrontendController::class, 'ourclassDetail'])->name('ourclassDetail');
+Route::get('ourproduct', [FrontendController::class, 'ourproduct'])->name('ourproduct');
+Route::post('upload', [UploadController::class, 'store'])->name('upload');
+Route::get('trainer', [FrontendController::class, 'trainer'])->name('trainer');
+Route::get('/trainer/{instructor}', [FrontendController::class, 'trainerDetails'])->name('trainerdetails');
+Route::get('contactus', [FrontendController::class, 'contactus'])->name('contactus');
+Route::post('storeContactMessage', [FrontendController::class, 'storeContactMessage'])->name('storeContactMessage');
+Route::get('/admin/contact/{id}', [DashboardController::class, 'show'])->name('admin.contact.show');
+Route::delete('/admin/contact/{id}', [DashboardController::class, 'destroy'])->name('admin.contact.destroy');
+Route::get('productdetails', [FrontendController::class, 'productdetails'])->name('productdetails');
+
+
+Route::get('/add-to-cart/{product}', [FrontendController::class, 'addToCart'])->name('add.cart');
+Route::get('/buy-now/{product}', [FrontendController::class, 'buyNow'])->name('checkout.buyNow');
+Route::get('/products', [FrontendController::class, 'allProducts'])->name('product.index');
+Route::post('/confirm-purchase', [FrontendController::class, 'confirmPurchase'])->name('purchase.confirm');
+
+
 //customer auth
 
 Route::get('customer/registerPage', [CustomerAuthController::class, 'registerPage'])->name('customer.registerPage');
@@ -48,6 +56,6 @@ Route::post('customer/register', [CustomerAuthController::class, 'register'])->n
 Route::get('customer/loginPage', [CustomerAuthController::class, 'loginPage'])->name('customer.loginPage');
 Route::post('customer/login', [CustomerAuthController::class, 'login'])->name('customer.login');
 
-Route::get('/search',[SearchController::class,'search'])->name('search');
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 require __DIR__ . '/auth.php';

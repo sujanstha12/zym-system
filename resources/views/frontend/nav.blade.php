@@ -21,25 +21,8 @@
                 <li><a class="nav-link text-white active mx-2" href="{{ route('welcome') }}">HOME</a></li>
                 <li><a class="nav-link text-white mx-2 active" href="{{ route('about') }}">ABOUT</a></li>
                 <li><a class="nav-link text-white mx-2 active" href="{{ route('ourclass') }}">CLASSES</a></li>
-
-                <li class="nav-item dropdown mx-2">
-                    <a class="nav-link dropdown-toggle text-white active" href="#" role="button"
-                        data-bs-toggle="dropdown">SHOP</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('ourproduct') }}">Our Products</a></li>
-                        <li><a class="dropdown-item" href="{{ route('productdetails') }}">Product details</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown mx-2">
-                    <a class="nav-link dropdown-toggle text-white active" href="#" role="button"
-                        data-bs-toggle="dropdown">TRAINERS</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('trainer') }}">Trainers</a></li>
-                    </ul>
-                </li>
-
-
+                <li><a class="nav-link text-white mx-2 active" href="{{ route('ourproduct') }}">SHOP</a></li>
+                <li><a class="nav-link text-white mx-2 active" href="{{ route('trainer') }}">TRAINERS</a></li>
                 <li><a class="nav-link text-white mx-2 active" href="{{ route('contactus') }}">CONTACT</a></li>
 
                 <!-- Search -->

@@ -49,13 +49,14 @@ Route::get('/products', [FrontendController::class, 'allProducts'])->name('produ
 Route::post('/confirm-purchase', [FrontendController::class, 'confirmPurchase'])->name('purchase.confirm');
 
 
+
+
 //customer auth
 
 Route::get('customer/registerPage', [CustomerAuthController::class, 'registerPage'])->name('customer.registerPage');
 Route::post('customer/register', [CustomerAuthController::class, 'register'])->name('customer.register');
 Route::get('customer/loginPage', [CustomerAuthController::class, 'loginPage'])->name('customer.loginPage');
 Route::post('customer/login', [CustomerAuthController::class, 'login'])->name('customer.login');
-
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 require __DIR__ . '/auth.php';

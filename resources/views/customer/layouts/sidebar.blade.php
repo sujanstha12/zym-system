@@ -8,7 +8,7 @@
             <li class="mb-3"><i class="bi bi-heart"></i> Wishlist</li>
             <li class="mb-3"><i class="bi bi-cart"></i> Cart</li>
             <li class="mb-3">
-                <a href="" class="text-decoration-none">
+                <a href="{{ route('customer.order.index') }}" class="text-decoration-none">
                   <i class="bi bi-box"></i> Orders
                 </a>
               </li>

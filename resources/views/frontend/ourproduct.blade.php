@@ -8,9 +8,9 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             @foreach ($products->take(12) as $product)
                 <div class="bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-2xl transition duration-300">
-                    <img src="{{ $product->image }}" alt="{{ $product->title }}" class="w-full h-48 object-cover">
+                  <img src="{{ $product->image }}" alt="{{ $product->title }}" class="w-full h-48 object-contain bg-gray-100">
 
-                    <div class="p-4">
+                  <div class="p-4">
                         <h3 class="text-lg font-semibold text-gray-800">{{ $product->title }}</h3>
                         <p class="text-green-600 font-bold mt-2">NPR {{ $product->rate }}</p>
 
@@ -26,11 +26,12 @@
                                 Add to Cart
                             </a>
 
-                            <!-- Buy Now Button -->
+                             <!-- Buy Now Button -->
                             <a href="{{ route('checkout.buyNow', $product->id) }}"
                                 class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 text-center block">
                                 Buy Now
                             </a>
+
 
                         </div>
                     </div>

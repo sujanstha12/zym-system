@@ -4,6 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Exercise;
+use App\Models\Instructor;
+use App\Models\Ourclass;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +17,10 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $productCount = Product::count();
-        return view('dashboard',compact('productCount'));
+        $instructorCount = Instructor::count();
+    $exerciseCount = Exercise::count();
+    $classCount = Ourclass::count();
+        return view('dashboard',compact('productCount','instructorCount', 'exerciseCount', 'classCount'));
     }
     public function profile(Request $request)
     {

@@ -42,7 +42,8 @@ class FrontendController extends Controller
 
     public function productdetails(Product $product)
     {
-        return view('frontend.productdetails', compact('product'));
+        $products = Product::all();
+        return view('frontend.productdetails', compact('product','products'));
     }
 
 
@@ -85,6 +86,7 @@ public function buyNow(Product $product)
     // You can send the product directly to a checkout view
     return view('frontend.checkout', compact('product'));
 }
+
 
 
 

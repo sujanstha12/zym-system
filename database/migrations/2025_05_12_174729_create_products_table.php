@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('image');
             $table->string('rate');
-            $table->string('description');
+            $table->text('description');
             $table->string('stock');
             $table->softDeletes();
             $table->timestamps();

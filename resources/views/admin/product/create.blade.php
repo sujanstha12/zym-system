@@ -34,18 +34,22 @@
             </div>
 
 
-            <div class="mb-3">
+            <<div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <input type="text" class="form-control" name="description" id="description">
-            </div>
+                <textarea class="form-control" name="description" id="description" rows="4"
+                    placeholder="Enter product description" required></textarea>
+    </div>
 
-            <div class="mb-3">
-                <label for="stock" class="form-label">Stock</label>
-                <input type="stock" class="form-control" name="stock" id="stock">
-            </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="mb-3">
+        <label for="stock" class="form-label">Stock</label>
+        <input type="number" class="form-control" name="stock" id="stock" min="0"
+            placeholder="Enter available stock">
+    </div>
 
-        </form>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
     </div>
 @endsection

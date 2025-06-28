@@ -36,19 +36,41 @@
                     </form>
                 </li>
 
-                <!-- User Icon Dropdown -->
-                <li class="nav-item dropdown mx-2">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                        data-bs-toggle="dropdown">
-                        <i class="bi bi-person-circle fs-5"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item" href="{{ route('customer.registerPage') }}"><i
-                                    class="bi bi-person-plus"></i> Register</a></li>
-                        <li><a class="dropdown-item" href="{{ route('customer.loginPage') }}"><i
-                                    class="bi bi-box-arrow-in-right"></i> Login</a></li>
-                    </ul>
-                </li>
+                @if (auth()->guard('customer')->check())
+                    <li class="nav-item dropdown mx-2">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle fs-5"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="{{ route('customer.dashboard') }}"><i
+                                        class="fa fa-table"></i> Dashboard</a></li>
+                            <li>
+                                <form action="{{ route('customer.logout') }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="dropdown-item">
+                                        <i class="bi bi-box-arrow-in-right"></i> Logout
+                                    </button>
+                                </form>
+                            </li>
+
+                        </ul>
+                    </li>
+                @else
+                    <li class="nav-item dropdown mx-2">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle fs-5"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="{{ route('customer.registerPage') }}"><i
+                                        class="bi bi-person-plus"></i> Register</a></li>
+                            <li><a class="dropdown-item" href="{{ route('customer.loginPage') }}"><i
+                                        class="bi bi-box-arrow-in-right"></i> Login</a></li>
+                        </ul>
+                    </li>
+                @endif
 
             </ul>
         </div>

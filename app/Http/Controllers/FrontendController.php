@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Contact\StoreContactRequest;
+use App\Models\CartItem;
 use App\Models\Classess;
 use App\Models\Contact;
 use App\Models\Exercise;
@@ -10,6 +11,8 @@ use App\Models\Instructor;
 use App\Models\Ourclass;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class FrontendController extends Controller
 {
@@ -36,14 +39,40 @@ class FrontendController extends Controller
     }
     public function ourproduct()
     {
+        $customerID = Auth::guard('customer')->user()->id;
+
         $products = Product::limit(12)->latest()->get();
-        return view('frontend.ourproduct', compact('products'));
+        return view('frontend.ourproduct', compact('products', 'customerID'));
     }
 
-    public function productdetails(Product $product)
+    public function productdetails(Product $ourproduct)
     {
-        $products = Product::all();
-        return view('frontend.productdetails', compact('product','products'));
+
+        return view('frontend.productdetails', compact('ourproduct'));
+    }
+
+
+
+
+    public function addToCart(Product $ourproduct)
+    {
+
+        $customerID = Auth::guard('customer')->user()->id;
+        $cart = CartItem::updateOrCreate(
+            [
+                'customer_id' => $customerID,
+                'product_id' => $ourproduct->id,
+            ],
+
+        );
+        Alert::success('Product added to cart successfully!');
+
+        return redirect()->back();
+    }
+    public function cart()
+    {
+        $cart = session()->get('cart', []);
+        return view('frontend.cart', compact('cart'));
     }
 
 
@@ -53,47 +82,21 @@ class FrontendController extends Controller
 
 
 
-     public function addToCart(Product $product)
-{
-    // Example cart logic using session
-    $cart = session()->get('cart', []);
 
-    if (isset($cart[$product->id])) {
-        $cart[$product->id]['quantity']++;
-    } else {
-        $cart[$product->id] = [
-            'title' => $product->title,
-            'quantity' => 1,
-            'price' => $product->rate,
-            'image' => $product->image
-        ];
+
+
+
+
+    // In FrontendController.php
+    public function allProducts()
+    {
+        $products = Product::latest()->paginate(12);
+        return view('frontend.allproducts', compact('products'));
     }
-
-    session()->put('cart', $cart);
-
-    return redirect()->back()->with('success', 'Product added to cart successfully!');
-}
-
-
-// In FrontendController.php
-public function allProducts()
-{
-    $products = Product::latest()->paginate(12);
-    return view('frontend.allproducts', compact('products'));
-}
-public function buyNow(Product $product)
-{
-    // You can send the product directly to a checkout view
-    return view('frontend.checkout', compact('product'));
-}
-
-
-
-
-
-
-
-
+    public function buyNow(Product $product)
+    {
+        return view('frontend.checkout', compact('product'));
+    }
 
     public function trainer()
     {
@@ -115,6 +118,10 @@ public function buyNow(Product $product)
     public function profile()
     {
         return view("frontend.profile");
+    }
+    public function myorder()
+    {
+        return view("frontend.myorder");
     }
 
     public function storeContactMessage(StoreContactRequest $request)

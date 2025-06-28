@@ -11,11 +11,12 @@
     </div>
 @endif
 
-<form method="POST" action="{{ route('admin.product.update') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('admin.product.update', $product) }}" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" name="title" id="title" required>
+            <input type="text" class="form-control" name="title" id="title" value="{{ old('title', $product->title) }}" required>
         </div>
 
           <div class="mb-3">
@@ -25,17 +26,17 @@
 
         <div class="mb-3">
             <label for="rate" class="form-label">Rate</label>
-            <input type="text" class="form-control" name="rate" id="rate">
+            <input type="text" class="form-control" name="rate" id="rate" value="{{ old('rate', $product->rate) }}">
         </div>
 
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <input type="text" class="form-control" name="description" id="description">
+            <input type="text" class="form-control" name="description" id="description" value="{{ old('description', $product->description) }}">
         </div>
 
         <div class="mb-3">
             <label for="stock" class="form-label">Stock</label>
-            <input type="stock" class="form-control" name="stock" id="stock">
+            <input type="stock" class="form-control" name="stock" id="stock" value="{{ old('stock', $product->stock) }}">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

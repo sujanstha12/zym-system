@@ -30,10 +30,10 @@ class ProductController extends Controller
         Alert::success('Product created successfully');
         return back();
     }
-    public function edit($id)
+    public function edit(Product $product)
     {
-        $product = Product::findOrFail($id);
-        return view('admin.product.edit', compact('product'));
+
+        return view('admin.product.edit',compact('product'));
     }
     public function update(UpdateProductRequest $request, Product $product)
     {

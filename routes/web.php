@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\Customer\CustomerAuthController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
@@ -40,13 +41,16 @@ Route::get('contactus', [FrontendController::class, 'contactus'])->name('contact
 Route::post('storeContactMessage', [FrontendController::class, 'storeContactMessage'])->name('storeContactMessage');
 Route::get('/admin/contact/{id}', [DashboardController::class, 'show'])->name('admin.contact.show');
 Route::delete('/admin/contact/{id}', [DashboardController::class, 'destroy'])->name('admin.contact.destroy');
-Route::get('productdetails', [FrontendController::class, 'productdetails'])->name('productdetails');
+Route::get('productdetails/{ourproduct}', [FrontendController::class, 'productdetails'])->name('productdetails');
+Route::get('bill/{ourproduct}',[FrontendController::class, 'bill'])->name('bill');
 
 
-Route::get('/add-to-cart/{product}', [FrontendController::class, 'addToCart'])->name('add.cart');
+Route::get('/add-to-cart/{ourproduct}', [FrontendController::class, 'addToCart'])->name('add.cart');
+
+Route::get('/cart', [FrontendController::class, 'cart'])->name('cart');
 Route::get('/buy-now/{product}', [FrontendController::class, 'buyNow'])->name('checkout.buyNow');
 Route::get('/products', [FrontendController::class, 'allProducts'])->name('product.index');
-Route::post('/confirm-purchase', [FrontendController::class, 'confirmPurchase'])->name('purchase.confirm');
+Route::post('/confirm-purchase/{ourproduct}', [SaleController::class, 'sale'])->name('purchase.confirm');
 
 
 

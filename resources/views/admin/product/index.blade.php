@@ -33,7 +33,7 @@
                                 <td style="max-width: 300px;">{{ Str::limit($product->description, 100) }}</td>
                                 <td>{{ $product->stock }}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('admin.product.edit', $product) }}" class="btn btn-sm btn-warning me-1">Edit</a>
+                                    <a href="{{ route('admin.product.edit',$product) }}" class="btn btn-sm btn-warning me-1">Edit</a>
                                     <form action="{{ route('admin.product.destroy', $product) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure you want to delete this product?');">
                                         @csrf
                                         @method('DELETE')

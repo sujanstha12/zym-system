@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Order;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CheckoutController extends Controller
 {
@@ -28,5 +28,26 @@ class CheckoutController extends Controller
 
         // Paid product — redirect to eSewa or show payment page
         return view('frontend.payment.esewa', compact('product'));
+    }
+     public function addToCart(Product $product)
+    {
+        // Example cart logic using session
+        $cart = session()->get('cart', []);
+
+        if (isset($cart[$product->id])) {
+            $cart[$product->id]['quantity']++;
+        } else {
+            $cart[$product->id] = [
+                'title' => $product->title,
+                'quantity' => 1,
+                'price' => $product->rate,
+                'image' => $product->image
+            ];
+        }
+
+        session()->put('cart', $cart);
+        Alert::success('Product purchased successfully!');
+
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 }

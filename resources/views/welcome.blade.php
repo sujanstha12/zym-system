@@ -69,6 +69,7 @@
 
 </style>
 
+ 
 <div class="testimonial-section">
   <p class="category">GYMMASTER REVIEWS - GYMS</p>
   <h2 class="main-heading">See what nearby gyms have to say</h2>
@@ -76,6 +77,7 @@
 
   <div class="carousel-container">
     <div class="carousel-track" id="carousel-track">
+
 @php
   $testimonials = [
     [
@@ -115,6 +117,7 @@
       'text' => 'Online booking saved us time and reduced errors. The system is very flexible and customizable to our needs.'
     ],
   ];
+
 @endphp
 
 

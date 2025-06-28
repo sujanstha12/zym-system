@@ -40,7 +40,7 @@ class CustomerAuthController extends Controller
         $request->authenticate();
         Alert::success("Login succesfully");
 
-        return redirect(route('customer.dashboard'));
+        return redirect(route('welcome'));
     }
     public function logout()
     {

@@ -9,4 +9,6 @@ Route::put('logout',[CustomerAuthController::class, 'logout'])->name('logout');
 
 
 Route::get('dashboard',[CustomerController::class,'dashboard'])->name('dashboard');
-
+Route::get('order', [OrderController::class,'index'])->name('order');
+Route::get('cart', [OrderController::class,'cart'])->name('cart');
+Route::delete('cart/{cart}', [OrderController::class,'deleteCart'])->name('cart.destroy');

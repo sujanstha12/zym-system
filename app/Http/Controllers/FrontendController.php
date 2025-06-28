@@ -38,12 +38,14 @@ class FrontendController extends Controller
         return view('frontend.classdetail', compact('ourclass', 'ourclasses', 'exercises'));
     }
     public function ourproduct()
-    {
-        $customerID = Auth::guard('customer')->user()->id;
+{
+    $customer = Auth::guard('customer')->user();
+    $customerID = $customer ? $customer->id : null; // Only sets ID if logged in
 
-        $products = Product::limit(12)->latest()->get();
-        return view('frontend.ourproduct', compact('products', 'customerID'));
-    }
+    $products = Product::limit(12)->latest()->get();
+
+    return view('frontend.ourproduct', compact('products', 'customerID'));
+}
 
     public function productdetails(Product $ourproduct)
     {

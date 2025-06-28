@@ -19,8 +19,7 @@
                                     class="name_user">{{ Auth::user()->name }}</span></a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{ route('admin.profile') }}">My Profile</a>
-                                <a class="dropdown-item" href="settings.html">Settings</a>
-                                <a class="dropdown-item" href="help.html">Help</a>
+
                                 <form action="{{ route('admin.profile.logout') }}" method="post">
                                     @csrf
                                     @method('PUT')

@@ -1,4 +1,4 @@
-@extends('customer.layout.master')
+@extends('customer.layouts.master')
 @section('content')
 
 <div class="container-fluid p-5 ">

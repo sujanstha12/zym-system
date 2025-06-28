@@ -3,7 +3,7 @@
     <!-- Main Content -->
     <main class="content w-100">
         <div class="container">
-            <h2 class="mb-4">Order List</h2>
+            <h2 class="mb-4">Cart List</h2>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -20,7 +20,9 @@
                             <td>{{ $cart->product->title }}</td>
                             <td>{{ $cart->product->rate }}</td>
                             <td>
-                                <a href="{{ route('checkout.buyNow', $cart->product->id) }}">Buy</a>
+                                <a href="{{ route('checkout.buyNow', $cart->product->id) }}" class="btn btn-primary">
+                                    <i class="fa fa-shopping-cart"></i> Buy Now
+                                </a>
                                 <form action="{{ route('customer.cart.destroy', $cart) }}" method="POST"
                                     class="d-inline-block"
                                     onsubmit="return confirm('Are you sure you want to delete this class?');">

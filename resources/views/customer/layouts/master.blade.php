@@ -75,6 +75,9 @@
 <nav class="navbar navbar-expand-lg p-3">
     <div class="container-fluid">
         <h2 class="navbar-brand mb-0">Customer Dashboard</h2>
+        <a href="{{ route('welcome') }}" class="btn btn-secondary">
+    <i class="fa fa-home"></i> Home
+</a>
     </div>
 </nav>
 

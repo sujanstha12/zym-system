@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\BMICalculatorController;
 use App\Http\Controllers\Customer\CustomerAuthController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
@@ -43,6 +44,7 @@ Route::get('/admin/contact/{id}', [DashboardController::class, 'show'])->name('a
 Route::delete('/admin/contact/{id}', [DashboardController::class, 'destroy'])->name('admin.contact.destroy');
 Route::get('productdetails/{ourproduct}', [FrontendController::class, 'productdetails'])->name('productdetails');
 Route::get('bill/{ourproduct}',[FrontendController::class, 'bill'])->name('bill');
+Route::post('/bmi/calculate', [BMICalculatorController::class, 'calculate'])->name('bmi.calculate');
 
 
 Route::get('/add-to-cart/{ourproduct}', [FrontendController::class, 'addToCart'])->name('add.cart');

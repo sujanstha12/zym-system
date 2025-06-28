@@ -4,7 +4,8 @@
         <!-- Brand/logo -->
         <a class="navbar-brand d-flex align-items-center" href="{{ route('welcome') }}">
             <img src="{{ asset('assets/frontend/logo.png') }}" alt="Logo" style="width: 50px;" class="me-2" />
-            <h3 class="system-title"><span class="highlights">NepholiZym System</span></h3>
+
+ <h3 class="system-title"><span class="highlights">Gym Management System</span></h3>
 
         </a>
 

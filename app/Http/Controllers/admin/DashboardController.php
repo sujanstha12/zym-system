@@ -18,9 +18,9 @@ class DashboardController extends Controller
     {
         $productCount = Product::count();
         $instructorCount = Instructor::count();
-    $exerciseCount = Exercise::count();
-    $classCount = Ourclass::count();
-        return view('dashboard',compact('productCount','instructorCount', 'exerciseCount', 'classCount'));
+        $exerciseCount = Exercise::count();
+        $classCount = Ourclass::count();
+        return view('dashboard', compact('productCount', 'instructorCount', 'exerciseCount', 'classCount'));
     }
     public function profile(Request $request)
     {

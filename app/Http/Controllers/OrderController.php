@@ -18,7 +18,7 @@ class OrderController extends Controller
         return view('customer.order', compact('sales'));
     }
 
-    public function cart()
+      public function cart()
     {
         $customer =  Auth::guard('customer')->user()->id;
         $cartItems = CartItem::where('customer_id', $customer)->with('product')->get();

@@ -5,7 +5,8 @@
     </div>
     <nav class="w-100 mt-4">
         <ul class="w-100">
-            <li class="mb-3"><i class="bi bi-heart"></i> Wishlist</li>
+            <li><a href="{{ route('customer.dashboard') }}"><i class="bi bi-table purple_color2"></i>
+                    <span>Dashboard</span></a></li>
 
               <li class="mb-3">
                 <a href="{{ route('customer.cart') }}" class="text-decoration-none">
@@ -17,9 +18,6 @@
                   <i class="bi bi-box"></i> Orders
                 </a>
               </li>
-
-            <li class="mb-3"><i class="bi bi-gear"></i> Settings</li>
-            <li class="mb-3 text-danger"><i class="bi bi-box-arrow-right"></i> Logout</li>
         </ul>
     </nav>
 </aside>

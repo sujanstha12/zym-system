@@ -13,20 +13,27 @@
                         <th>Quantity</th>
                         <th>Total Amount</th>
                         <th>Status</th>
-                        <th>Action</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($sales as $sale)
-
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $sale->product->name }}</td>
-                            <td>{{ $sale->product->prize }}</td>
+                            <td>{{ $sale->product->title }}</td>
+                            <td>{{ $sale->product->rate }}</td>
                             <td>{{ $sale->purchased_quantity }}</td>
-                            <td>{{ $sale->total_amounts }}</td>
-                            <td>ok</td>
-                            <td>ok</td>
+                            <td>{{ $sale->product->rate * $sale->purchased_quantity }}</td>
+
+                            <td>
+                                @if ($sale->product->stock > 0)
+                                    <span class="badge bg-success">Available</span>
+                                @else
+                                    <span class="badge bg-danger">Out of Stock</span>
+                                @endif
+                            </td>
+
+
 
                         </tr>
                     @endforeach
